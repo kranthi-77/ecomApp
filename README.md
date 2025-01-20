@@ -34,7 +34,7 @@ npm start
 ```
 
 ### Step 4: Access the Application
-- The **server** will run on the port specified in the `.env` file (default: 5000).
+- The **server** will run on the port specified in the `.env` file.
 - The **shopping app** will run on the default React development server port (usually 3000).
 - Use the login credentials provided above to access the application.
 
