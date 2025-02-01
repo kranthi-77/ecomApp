@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
-
+import Cookies from "js-cookie";
+ 
 import ProductCard from '../ProductCard'
 
 import './index.css'
@@ -27,12 +28,12 @@ class PrimeDealsSection extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
 
-    const token = localStorage.getItem('token')
+    const tok = Cookies.get('jwt_token')
 
     const apiUrl = 'https://apis.ccbp.in/prime-deals'
     const options = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${tok}`,
       },
       method: 'GET',
     }

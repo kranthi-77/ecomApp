@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+import Cookies from "js-cookie";
 
 import FiltersGroup from '../FiltersGroup'
 import ProductCard from '../ProductCard'
@@ -89,14 +90,13 @@ class AllProductsSection extends Component {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
-    const token = localStorage.getItem('token')
-    console.log(token)
+    const tok = Cookies.get('jwt_token')
     const {activeOptionId, activeCategoryId, searchInput, activeRatingId} =
       this.state
     const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`
     const options = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization:  `Bearer ${tok}`,
       },
       method: 'GET',
     }

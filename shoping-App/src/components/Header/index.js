@@ -5,10 +5,11 @@ import CartContext from '../../context/CartContext'
 import './index.css'
 
 const Header = props => {
-  const onClickLogout = LogoutUser => {
+  const onClickLogout = (LogoutUser,removeAllCartItems) => {
     LogoutUser()
     const {history} = props
     history.replace('/login')
+    removeAllCartItems()
   }
 
   const renderCartItemsCount = () => (
@@ -30,7 +31,7 @@ const Header = props => {
 
   return (
     <CartContext.Consumer>
-      {({LogoutUser}) => (
+      {({LogoutUser,removeAllCartItems}) => (
         <nav className="nav-header">
           <div className="nav-content">
             <div className="nav-bar-mobile-logo-container">
@@ -45,7 +46,7 @@ const Header = props => {
               <button
                 type="button"
                 className="nav-mobile-btn"
-                onClick={() => onClickLogout(LogoutUser)}
+                onClick={() => onClickLogout(LogoutUser,removeAllCartItems)}
               >
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-log-out-img.png"
